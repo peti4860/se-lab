@@ -13,6 +13,7 @@ public class TorpedoStore {
   private double FAILURE_RATE = 0.0; //NOSONAR
 
   private int torpedoCount = 0;
+  //random geneator private-kent letrehozva, hogy a fire() metodusban lehessen hasznalni
   private Random generator = new Random();
 
   public TorpedoStore(int numberOfTorpedos){
@@ -31,6 +32,7 @@ public class TorpedoStore {
 
   public boolean fire(int numberOfTorpedos){
     if(numberOfTorpedos < 1 || numberOfTorpedos > this.torpedoCount){
+      //throw hasznalata, hogy mashol elkaphassuk
       throw new IllegalArgumentException("numberOfTorpedos");
     }
 
@@ -41,6 +43,7 @@ public class TorpedoStore {
 
     if (r >= FAILURE_RATE) {
       // successful firing
+      //helytelen sorrend javitva
       this.torpedoCount -= numberOfTorpedos;
       success = true;
     } else {
